@@ -24,7 +24,7 @@ func CreateCar(ctx *gin.Context) {
 		return
 	}
 
-	newCar.CarID = fmt.Sprintf("c%d", len(CarData)-1)
+	newCar.CarID = fmt.Sprintf("c-%d", len(CarData)+1)
 	CarData = append(CarData, newCar)
 
 	ctx.JSON(http.StatusCreated, gin.H{
