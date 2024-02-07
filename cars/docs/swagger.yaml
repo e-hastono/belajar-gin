@@ -1,0 +1,123 @@
+basePath: /
+definitions:
+  models.Car:
+    properties:
+      brand:
+        type: string
+      id:
+        type: integer
+      model:
+        type: string
+      price:
+        type: integer
+    type: object
+host: localhos
+info:
+  contact:
+    email: koder@swagger.io
+    name: API Support
+  description: This is a sample API for car management
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Car API
+  version: "1.0"
+paths:
+  /cars:
+    get:
+      consumes:
+      - application/json
+      description: Get details of all cars
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Car'
+      summary: Get details
+      tags:
+      - cars
+    post:
+      consumes:
+      - application/json
+      description: Post car info
+      parameters:
+      - description: create car
+        in: body
+        name: models.Car
+        required: true
+        schema:
+          $ref: '#/definitions/models.Car'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.Car'
+      summary: Post car info
+      tags:
+      - cars
+  /cars/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: Get information of a car with a given id
+      parameters:
+      - description: ID of the car
+        in: path
+        name: Id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Car'
+      summary: Get car info for a given id
+      tags:
+      - cars
+  /cars/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete car information based on given id
+      parameters:
+      - description: Id of the car to be deleted
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete car with given id
+      tags:
+      - cars
+    put:
+      consumes:
+      - application/json
+      description: Update car information for a given id
+      parameters:
+      - description: Id of the car to be updated
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Car'
+      summary: Update car info of given id
+      tags:
+      - cars
+swagger: "2.0"
